@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class InteractableEventTest : MonoBehaviour
 {
+    private Vector3 originPosition;
     private MeshRenderer meshRenderer;
 
     private void Awake()
     {
+        originPosition = transform.position;
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
@@ -31,5 +33,11 @@ public class InteractableEventTest : MonoBehaviour
     {
         meshRenderer.material.color = Color.green;
         Debug.Log($"{gameObject.name} - OnActivated");
+    }
+
+    public void ObjectReset()
+    {
+        transform.position = originPosition;
+        meshRenderer.material.color = Color.white;
     }
 }
