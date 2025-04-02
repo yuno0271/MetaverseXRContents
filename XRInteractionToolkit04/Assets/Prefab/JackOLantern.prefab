@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5672902405263410709}
   - component: {fileID: 8957067720594674514}
   - component: {fileID: 8157164007821577220}
+  - component: {fileID: 7385688918728325365}
+  - component: {fileID: 3261462932218758387}
   m_Layer: 0
   m_Name: JackOLantern
   m_TagString: Untagged
@@ -175,6 +177,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3261462932218758387}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   destroyDelay: 1
 --- !u!114 &5672902405263410709
 MonoBehaviour:
@@ -224,6 +238,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0.8
   max: 1.5
+--- !u!114 &7385688918728325365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642004275597326259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9fafa41288e27642866f9ea1dabbf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 158198236367302513}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!135 &3261462932218758387
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642004275597326259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.283
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &2774778396349839884
 GameObject:
   m_ObjectHideFlags: 0

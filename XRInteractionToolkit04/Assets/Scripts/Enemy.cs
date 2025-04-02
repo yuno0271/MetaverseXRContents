@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     {
         
         // Debug. 테스트용 코드
-        Invoke("Destroy", Random.Range(1.0f, 6.0f));
+        //Invoke("Destroy", Random.Range(1.0f, 6.0f));
 
         if(onCreated != null)onCreated.Invoke();
     }

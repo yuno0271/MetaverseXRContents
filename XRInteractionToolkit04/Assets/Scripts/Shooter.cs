@@ -17,12 +17,14 @@ public class Shooter : MonoBehaviour
     [SerializeField]
     private UnityEvent<Vector3> onShootSuccess;
     [SerializeField]
-    private UnityEvent ohShootFail;
+    private UnityEvent onShootFail;
 
+    private Magazine magazine;
     private WaitForSeconds waitShootDelay;
 
     private void Awake()
     {
+        magazine = GetComponent<Magazine>();
         waitShootDelay = new WaitForSeconds(shootDelay);
 
         Stop();
@@ -43,7 +45,14 @@ public class Shooter : MonoBehaviour
     {
         while (true)
         {
-            Shoot();
+            if(magazine.Use())
+            {
+                Shoot();
+            }
+            else
+            {
+                onShootFail?.Invoke();
+            }
 
             yield return waitShootDelay;
         }
@@ -54,6 +63,10 @@ public class Shooter : MonoBehaviour
         if(Physics.Raycast(shootPoint.position, shootPoint.forward, out RaycastHit hitInfo, maxDistance, hittableMask))
         {
             Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.identity);
+
+            Hittable hitObject = hitInfo.transform.GetComponent<Hittable>();
+            hitObject?.Hit();
+
             onShootSuccess?.Invoke(hitInfo.point);
         }
         else
