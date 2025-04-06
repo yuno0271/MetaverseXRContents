@@ -15,11 +15,9 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        
-        // Debug. 테스트용 코드
-        //Invoke("Destroy", Random.Range(1.0f, 6.0f));
-
         if(onCreated != null)onCreated.Invoke();
+
+        EnemyManager.Instance.OnSpawn(this);
     }
 
     public void Destroy()
@@ -34,5 +32,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, destroyDelay);
 
         if(onDestroyed != null) onDestroyed.Invoke();
+
+        EnemyManager.Instance.OnDestroyed(this);
     }
 }
