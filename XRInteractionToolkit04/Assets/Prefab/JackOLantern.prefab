@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5263387551833206397}
   - component: {fileID: 158198236367302513}
   - component: {fileID: 5672902405263410709}
-  - component: {fileID: 8957067720594674514}
   - component: {fileID: 8157164007821577220}
   - component: {fileID: 7385688918728325365}
   - component: {fileID: 3261462932218758387}
+  - component: {fileID: 8804256480486682584}
   m_Layer: 0
   m_Name: JackOLantern
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MonoBehaviour:
   onCreated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8957067720594674514}
-        m_TargetAssemblyTypeName: ChangeAgentDestination, Assembly-CSharp
+      - m_Target: {fileID: 8804256480486682584}
+        m_TargetAssemblyTypeName: ChangeAgentDestinationToCore, Assembly-CSharp
         m_MethodName: Call
         m_Mode: 1
         m_Arguments:
@@ -211,19 +211,6 @@ MonoBehaviour:
   saturationMax: 1
   valueMin: 0.7
   valueMax: 1
---- !u!114 &8957067720594674514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642004275597326259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd8e04111ff6c8f4cab82bfa444d8f9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {x: 0, y: 2, z: 0}
 --- !u!114 &8157164007821577220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +273,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.283
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &8804256480486682584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642004275597326259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c63d213e176a7488946a8fbecec57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2774778396349839884
 GameObject:
   m_ObjectHideFlags: 0
