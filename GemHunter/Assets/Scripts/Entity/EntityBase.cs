@@ -34,8 +34,6 @@ public class EntityBase : MonoBehaviour
 }
 
 
-/*
-*/
 /* // middlePoint 변수에 값을 할당하지 않았을 때 예외처리
 		if ( middlePoint == null )
 		{

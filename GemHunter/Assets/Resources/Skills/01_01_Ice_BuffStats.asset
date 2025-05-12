@@ -32,3 +32,6 @@ MonoBehaviour:
     minValue: 0
     defaultValue: 0.2
     bonusValue: 0
+  attackBaseStats: []
+  attackBuffStats: []
+  projectile: {fileID: 0}

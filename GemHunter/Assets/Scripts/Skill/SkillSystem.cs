@@ -5,6 +5,8 @@ using UnityEngine;
 public class SkillSystem : MonoBehaviour
 {
 	[SerializeField]
+	private	string[]	skillName;
+	[SerializeField]
 	private	SkillGad	skillGad;
 	[SerializeField]
 	private	Transform	skillSpawnPoint;
@@ -23,9 +25,11 @@ public class SkillSystem : MonoBehaviour
         foreach ( var item in skillDict )
         {
             SkillBase skill = null;
-			if ( item.Value.skillType.Equals(SkillType.Buff) ) skill = new SkillBuff();
+			if ( item.Value.skillType.Equals(SkillType.Buff) )				skill = new SkillBuff();
+			else if ( item.Value.skillType.Equals(SkillType.Emission) )		skill = new SkillEmission();
+			else if ( item.Value.skillType.Equals(SkillType.Sustained) )	skill = new SkillSustained();
 
-			skill.Setup(item.Value, owner);
+			skill.Setup(item.Value, owner, skillSpawnPoint);
 			skills.Add(item.Key, skill);
 			// 습득한 모든 스킬의 이름, 레벨, 설명 출력 [Debug]
 			Logger.Log($"[{skill.SkillName}] Lv. {skill.CurrentLevel}\n{skill.Description}");
@@ -37,11 +41,31 @@ public class SkillSystem : MonoBehaviour
 		// 레벨 업 가능한 임의의 스킬 3개를 선택하고, 그 중 하나를 레벨 업 [Debug Test]
 		if ( Input.GetKeyDown("1") ) SelectSkill();
 
+		if ( Input.GetKeyDown("2") ) LevelUp(skills[skillName[0]]);
+		if ( Input.GetKeyDown("3") ) LevelUp(skills[skillName[1]]);
+		if ( Input.GetKeyDown("4") ) LevelUp(skills[skillName[2]]);
+		if ( Input.GetKeyDown("5") ) LevelUp(skills[skillName[3]]);
+		if ( Input.GetKeyDown("6") ) LevelUp(skills[skillName[4]]);
+
+		// 모든 공격 스킬 업데이트
+		foreach ( var item in skills )
+		{
+			if ( item.Value.CurrentLevel == 0 ) continue;
+
+			item.Value.OnSkill();
+		}
+
 		// 플레이어의 목표가 없거나 || 이동 중이면 모든 스킬 시전 불가
 		if ( owner.Target == null || owner.IsMoved == true ) return;
 		
 		// 기본 공격 스킬 업데이트
 		skillGad.OnSkill();
+
+		// 모든 공격 스킬의 쿨타임 업데이트
+		foreach ( var item in skills )
+		{
+			item.Value.IsSkillAvailable();
+		}
 	}
 
 	public void LevelUp(SkillBase skill)
