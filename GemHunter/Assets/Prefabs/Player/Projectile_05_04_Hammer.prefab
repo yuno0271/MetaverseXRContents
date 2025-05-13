@@ -4933,6 +4933,11 @@ GameObject:
   - component: {fileID: 6922499155744033515}
   - component: {fileID: 3424741239086686410}
   - component: {fileID: 3954794301601985474}
+  - component: {fileID: 633623835126369793}
+  - component: {fileID: 283956083724944572}
+  - component: {fileID: 457551497562947012}
+  - component: {fileID: 2974333568454671319}
+  - component: {fileID: 8256402524558932327}
   m_Layer: 0
   m_Name: Projectile_05_04_Hammer
   m_TagString: Untagged
@@ -5029,6 +5034,75 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &633623835126369793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500505832017549986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6fae3a18f968941814cdff0c11f353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+--- !u!114 &283956083724944572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500505832017549986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5021336cd46c649a20faefa87c6485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTime: 0.1
+--- !u!114 &457551497562947012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500505832017549986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d17af53d5a19448aeaca9ad430ac01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 540
+  isPlay: 1
+--- !u!114 &2974333568454671319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500505832017549986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422a06ac62373d2498e334a97636d900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 5444576530929710607, guid: dde7a72a4de1bdc40a7138e6bd05585f, type: 3}
+  damageText: {fileID: 4249547079194008704, guid: f6b865cee4dd6c14eb18c55403809227, type: 3}
+  destroyType: 0
+  attackType: 0
+  isIgnoreWall: 1
+--- !u!114 &8256402524558932327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500505832017549986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd142485e083024190726b2a023d7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8400433420895175609
 GameObject:
   m_ObjectHideFlags: 0

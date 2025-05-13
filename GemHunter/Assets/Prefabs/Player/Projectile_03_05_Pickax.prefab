@@ -4932,6 +4932,8 @@ GameObject:
   - component: {fileID: 8677875510684666512}
   - component: {fileID: 762311545928954567}
   - component: {fileID: 92868458688825277}
+  - component: {fileID: 7039855445441282374}
+  - component: {fileID: 3757093670185541193}
   m_Layer: 0
   m_Name: Projectile_03_05_Pickax
   m_TagString: Untagged
@@ -5028,3 +5030,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7039855445441282374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631336706739582677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d17af53d5a19448aeaca9ad430ac01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 720
+  isPlay: 1
+--- !u!114 &3757093670185541193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631336706739582677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422a06ac62373d2498e334a97636d900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1439455970262937054, guid: 84d4aa9e953a97e43b6925bb57d9c962, type: 3}
+  damageText: {fileID: 4249547079194008704, guid: f6b865cee4dd6c14eb18c55403809227, type: 3}
+  destroyType: 1
+  attackType: 1
+  isIgnoreWall: 1
