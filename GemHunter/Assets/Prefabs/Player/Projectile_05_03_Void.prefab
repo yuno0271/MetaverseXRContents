@@ -98,6 +98,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6560807765542736872}
   - component: {fileID: 1152239328044040044}
+  - component: {fileID: 5614370253078214843}
+  - component: {fileID: 8340485690573887942}
+  - component: {fileID: 23786882743331864}
   m_Layer: 0
   m_Name: Projectile_05_03_Void
   m_TagString: Untagged
@@ -123,7 +126,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1152239328044040044
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,8 +137,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -148,6 +151,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5614370253078214843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669324722476767220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6fae3a18f968941814cdff0c11f353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+--- !u!114 &8340485690573887942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669324722476767220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5021336cd46c649a20faefa87c6485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTime: 0.1
+--- !u!114 &23786882743331864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669324722476767220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849da815ff587e1408c331025854abd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
+  damageText: {fileID: 0}
+  projectile: {fileID: 2481031012323523040, guid: 02965595b81b32e448402f0be635c122, type: 3}
 --- !u!1 &7553460782070321572
 GameObject:
   m_ObjectHideFlags: 0

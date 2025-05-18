@@ -4842,6 +4842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527005144522594035}
+  - component: {fileID: 3788395155472989770}
   m_Layer: 0
   m_Name: Projectile_01_03_Blizzard
   m_TagString: Untagged
@@ -4865,3 +4866,17 @@ Transform:
   - {fileID: 5736915868652011496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3788395155472989770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125599324568790173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7931d51586996449ab855fd96b5442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 8053877542124405536, guid: 8dcb8cb9fc14f7445976281fe2c6aba7, type: 3}
+  damageText: {fileID: 4249547079194008704, guid: f6b865cee4dd6c14eb18c55403809227, type: 3}

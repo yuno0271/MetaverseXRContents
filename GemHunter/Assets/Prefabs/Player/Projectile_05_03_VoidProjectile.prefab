@@ -4992,6 +4992,9 @@ GameObject:
   - component: {fileID: 7808923887372005719}
   - component: {fileID: 1608093935534737214}
   - component: {fileID: 2433555541308628606}
+  - component: {fileID: -1613720152978290805}
+  - component: {fileID: -3442987952618926459}
+  - component: {fileID: 3352693572113907037}
   m_Layer: 0
   m_Name: Projectile_05_03_VoidProjectile
   m_TagString: Untagged
@@ -5078,6 +5081,49 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-1613720152978290805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481031012323523040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6fae3a18f968941814cdff0c11f353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+--- !u!114 &-3442987952618926459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481031012323523040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5021336cd46c649a20faefa87c6485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTime: 0.2
+--- !u!114 &3352693572113907037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481031012323523040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422a06ac62373d2498e334a97636d900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 5444576530929710607, guid: dde7a72a4de1bdc40a7138e6bd05585f, type: 3}
+  damageText: {fileID: 4249547079194008704, guid: f6b865cee4dd6c14eb18c55403809227, type: 3}
+  destroyType: 0
+  attackType: 1
+  isIgnoreWall: 0
 --- !u!1 &8309252499137721229
 GameObject:
   m_ObjectHideFlags: 0

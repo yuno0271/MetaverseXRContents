@@ -1066,8 +1066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817a5642324300743b8546c282ad7b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName:
-  - 01_02_Ice_Ice Spear
   skillGad: {fileID: 1011619809}
   skillSpawnPoint: {fileID: 769388567}
 --- !u!1 &1248271399

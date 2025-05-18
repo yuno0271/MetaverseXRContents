@@ -5,8 +5,6 @@ using UnityEngine;
 public class SkillSystem : MonoBehaviour
 {
 	[SerializeField]
-	private	string[]	skillName;
-	[SerializeField]
 	private	SkillGad	skillGad;
 	[SerializeField]
 	private	Transform	skillSpawnPoint;
@@ -28,6 +26,7 @@ public class SkillSystem : MonoBehaviour
 			if ( item.Value.skillType.Equals(SkillType.Buff) )				skill = new SkillBuff();
 			else if ( item.Value.skillType.Equals(SkillType.Emission) )		skill = new SkillEmission();
 			else if ( item.Value.skillType.Equals(SkillType.Sustained) )	skill = new SkillSustained();
+			else if ( item.Value.skillType.Equals(SkillType.Global) )		skill = new SkillGlobal();
 
 			skill.Setup(item.Value, owner, skillSpawnPoint);
 			skills.Add(item.Key, skill);
@@ -40,12 +39,6 @@ public class SkillSystem : MonoBehaviour
 	{
 		// 레벨 업 가능한 임의의 스킬 3개를 선택하고, 그 중 하나를 레벨 업 [Debug Test]
 		if ( Input.GetKeyDown("1") ) SelectSkill();
-
-		if ( Input.GetKeyDown("2") ) LevelUp(skills[skillName[0]]);
-		if ( Input.GetKeyDown("3") ) LevelUp(skills[skillName[1]]);
-		if ( Input.GetKeyDown("4") ) LevelUp(skills[skillName[2]]);
-		if ( Input.GetKeyDown("5") ) LevelUp(skills[skillName[3]]);
-		if ( Input.GetKeyDown("6") ) LevelUp(skills[skillName[4]]);
 
 		// 모든 공격 스킬 업데이트
 		foreach ( var item in skills )
