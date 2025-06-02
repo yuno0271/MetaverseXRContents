@@ -145,8 +145,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    level: 1
-    exp: 0
+    currentExp:
+      statType: 12
+      maxValue: 9999
+      minValue: 0
+      defaultValue: 10
+      bonusValue: 0
     currentHP:
       statType: 4
       maxValue: 9999
@@ -184,9 +188,16 @@ MonoBehaviour:
       minValue: 0
       defaultValue: 0.05
       bonusValue: 0
+    - statType: 11
+      maxValue: 9999
+      minValue: 1
+      defaultValue: 1
+      bonusValue: 0
   middlePoint: {fileID: 5715633662132406466}
   hudPoint: {fileID: 1352809819333727401}
   uiPrefab: {fileID: 6981897413521103567, guid: 529d7ca0a014c7a469a5b34d163f9e94, type: 3}
+  gemMin: 5
+  gemMax: 21
 --- !u!114 &8312210303640041816
 MonoBehaviour:
   m_ObjectHideFlags: 0

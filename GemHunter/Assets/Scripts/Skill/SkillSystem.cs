@@ -5,13 +5,23 @@ using UnityEngine;
 public class SkillSystem : MonoBehaviour
 {
 	[SerializeField]
-	private	SkillGad	skillGad;
+	private	SkillGad		skillGad;
 	[SerializeField]
-	private	Transform	skillSpawnPoint;
+	private	Transform		skillSpawnPoint;
+	[SerializeField]
+	private	UISkillList		uiSkillList;
+	[SerializeField]
+	private UISelectSkill	uiSelectSkill;
+	[SerializeField]
+	private	GameController	gameController;
 
-	private	PlayerBase	owner;
+	private	PlayerBase		owner;
 
-	private	Dictionary<string, SkillBase> skills = new Dictionary<string, SkillBase>();
+	private	Dictionary<string, SkillBase>		skills			= new Dictionary<string, SkillBase>();
+	private	Dictionary<SkillElement, int>		elementalCounts = new Dictionary<SkillElement, int>();
+	private	Dictionary<SkillElement, SkillBase>	elementalSkills = new Dictionary<SkillElement, SkillBase>();
+
+	public	bool IsSelectSkill { get; private set; } = false;
 
 	private void Awake()
 	{
@@ -33,12 +43,27 @@ public class SkillSystem : MonoBehaviour
 			// 습득한 모든 스킬의 이름, 레벨, 설명 출력 [Debug]
 			Logger.Log($"[{skill.SkillName}] Lv. {skill.CurrentLevel}\n{skill.Description}");
         }
+
+		// 속성 보너스 스킬 등록
+		var eSkillDict = Resources.LoadAll<SkillTemplate>("ElementalSkills/").ToDictionary(item => item.name, item => item);
+		foreach ( var item in eSkillDict )
+		{
+			SkillBase skill = new SkillBuff();
+			skill.Setup(item.Value, owner, skillSpawnPoint);
+
+			elementalCounts.Add(item.Value.element, 0);			// 각 속성 보너스 스킬의 레벨 카운트
+			elementalSkills.Add(item.Value.element, skill);		// 각 속성 보너스 스킬(SkillBase)
+
+			Logger.Log($"{item.Value.element}, {item.Value.skillName}");
+		}
+
+		uiSkillList.Setup(skillDict, eSkillDict);
     }
 
 	private void Update()
 	{
 		// 레벨 업 가능한 임의의 스킬 3개를 선택하고, 그 중 하나를 레벨 업 [Debug Test]
-		if ( Input.GetKeyDown("1") ) SelectSkill();
+		if ( Input.GetKeyDown("1") ) StartSelectSkill();
 
 		// 모든 공격 스킬 업데이트
 		foreach ( var item in skills )
@@ -66,12 +91,27 @@ public class SkillSystem : MonoBehaviour
 		if ( skills.ContainsValue(skill) )
 		{
 			skill.TryLevelUp();
+			uiSkillList.LevelUp(skill);
 			Logger.Log($"Level Up [{skill.SkillName}] {skill.Element}, Lv. {skill.CurrentLevel}");
+
+			// 해당 스킬이 소속된 속성의 총 스킬레벨 합 +1
+			elementalCounts[skill.Element] ++;
+			// 해당 스킬의 속성 보너스 레벨 증가 여부 판단
+			if ( elementalCounts[skill.Element] % 3 == 0 )
+			{
+				elementalSkills[skill.Element].TryLevelUp();
+				uiSkillList.LevelUp(elementalSkills[skill.Element]);
+				Logger.Log($"{skill.Element} Lv. {elementalSkills[skill.Element].CurrentLevel}");
+			}
 		}
 	}
 	
-	public void SelectSkill()
+	public void StartSelectSkill()
 	{
+		IsSelectSkill = true;
+		// 스킬 선택 중에는 일시 정지
+		gameController.SetTimeScale(0);
+
 		// 습득 or 레벨업 가능한 임의의 3개 스킬 선택
 		var randomSkills = GetRandomSkills(skills, 3);
 		if ( randomSkills == null )
@@ -80,9 +120,16 @@ public class SkillSystem : MonoBehaviour
 			return;
 		}
 
-		// 스킬 선택 UI가 없기 때문에 임시로 스킬 습득 처리
-		int index = Random.Range(0, randomSkills.Count);
-		LevelUp(randomSkills[index]);
+		// 획득 가능한 3개의 스킬 정보를 UI에 출력
+		uiSelectSkill.StartSelectSkillUI(this, randomSkills.ToArray());
+	}
+
+	public void EndSelectSkill(SkillBase skill)
+	{
+		LevelUp(skill);						// {skill} 스킬 레벨 업
+		uiSelectSkill.EndSelectSkillUI();	// 스킬 선택 UI 비활성화
+		gameController.SetTimeScale(1);		// 게임 재개
+		IsSelectSkill = false;
 	}
 
 	private List<SkillBase> GetRandomSkills(Dictionary<string, SkillBase> skills, int count=3)

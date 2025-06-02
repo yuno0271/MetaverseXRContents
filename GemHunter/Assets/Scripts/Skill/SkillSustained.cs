@@ -43,7 +43,7 @@ public class SkillSustained : SkillBase
 		// 모든 곡괭이의 공격력 갱신
 		foreach ( var item in pickaxs )
 		{
-			item.GetComponent<ProjectileCollision2D>().Setup(null, GetStat(StatType.Damage).Value);
+			item.GetComponent<ProjectileCollision2D>().Setup(null, CalculateDamage());
 		}
 	}
 
@@ -52,7 +52,7 @@ public class SkillSustained : SkillBase
 		for ( int i = 0; i < count; ++ i )
 		{
 			GameObject clone = GameObject.Instantiate(skillTemplate.projectile, parent);
-			clone.GetComponent<ProjectileCollision2D>().Setup(null, GetStat(StatType.Damage).Value);
+			clone.GetComponent<ProjectileCollision2D>().Setup(null, CalculateDamage());
 			pickaxs.Add(clone);
 		}
 	}
