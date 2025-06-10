@@ -1,4 +1,5 @@
-﻿using Unity.Behavior;
+using System;
+using Unity.Behavior;
 
 [BlackboardEnum]
 public enum EnemyState
@@ -9,4 +10,3 @@ public enum EnemyState
 	Chase,
 	Attack
 }
-

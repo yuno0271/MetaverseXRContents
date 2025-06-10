@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1415044076915397756}
   - component: {fileID: 3223753220807651671}
   - component: {fileID: 2413222878499159979}
+  - component: {fileID: 6946570365776646541}
   m_Layer: 3
   m_Name: Enemy_00_RedGem
   m_TagString: Enemy
@@ -286,11 +287,47 @@ MonoBehaviour:
   m_Graph: {fileID: -6403182150351730331, guid: fb3e29d0075e9c94187dcd63d68af7fc, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 7900060429505003810
+  - rid: 2645370241609630539
+  - rid: 2645370241609630540
+  - rid: 2645370241609630541
+  - rid: 2645370241711080096
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 2645370241609630539
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16663107745426431930
+          m_Value1: 972860088784681209
+        Name: attackDistance
+        m_Value: 4
+    - rid: 2645370241609630540
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8034833783918560810
+          m_Value1: 13619831747004295099
+        Name: chaseDistance
+        m_Value: 6
+    - rid: 2645370241609630541
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12804866712275244745
+          m_Value1: 14578110496442896782
+        Name: fallOutDistance
+        m_Value: 10
+    - rid: 2645370241711080096
+      type: {class: 'BlackboardVariable`1[[WeaponBase, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15986778969646876253
+          m_Value1: 13483336633891968736
+        Name: currentWeapon
+        m_Value: {fileID: 6946570365776646541}
     - rid: 7900060429505003810
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -299,6 +336,20 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 4531316405881842227}
+--- !u!114 &6946570365776646541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531316405881842227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde0d50012d639541add2728abcc3fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8774238542404161415, guid: 033d6b9e6f3ebed41aa621c481de9ed7, type: 3}
+  projectileSpawnPoint: {fileID: 5715633662132406466}
 --- !u!1 &5495652131377994420
 GameObject:
   m_ObjectHideFlags: 0
