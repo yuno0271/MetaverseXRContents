@@ -4,6 +4,7 @@ public class ProjectileCubicHoming : ProjectileBase
 {
 	private	Vector2		start, end, point1, point2;
 	private	float		percent = 0, duration = 1f, r = 2;
+	[SerializeField]
 	private	EntityBase	target;
 
 	public override void Setup(EntityBase target, float damage, int maxCount, int index)

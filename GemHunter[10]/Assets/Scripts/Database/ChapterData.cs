@@ -4,22 +4,12 @@
 public class ChapterData : ScriptableObject
 {
 	[SerializeField]
-	private	ChapterDatabase		chapterDatabase;
-	[SerializeField]
 	private	ChapterDataTable	chapterDataTable;
 	[SerializeField]
 	private	StageDataTable		stageDataTable;
 
-	public	ChapterDatabase		ChapterDatabase => chapterDatabase;
 	public	ChapterDataTable	ChapterDataTable => chapterDataTable;
 	public	StageDataTable		StageDataTable => stageDataTable;
-}
-
-[System.Serializable]
-public struct ChapterDatabase
-{
-	public	bool	isUnlock;		// 챕터 해금 여부
-	public	int		bestStage;		// 최고 스테이지
 }
 
 [System.Serializable]

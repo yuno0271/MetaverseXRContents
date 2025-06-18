@@ -1,24 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
 	[SerializeField]
-	private	Tilemap			tilemap;
+	private	Tilemap					tilemap;
 	[SerializeField]
-	private	GameObject[]	enemyPrefabs;
+	private	GameObject				enemySpawnTile;
 	[SerializeField]
-	private	Transform		parentTransform;
+	private	GameObject[]			enemyPrefabs;
 	[SerializeField]
-	private	GemCollector	gemCollector;
+	private	Transform				parentTransform;
 	[SerializeField]
-	private	EntityBase		target;
+	private	GemCollector			gemCollector;
 	[SerializeField]
-	private	int				enemyCount = 10;
+	private	EntityBase				target;
 
-	private	Vector3			offset = new Vector3(0.5f, 0.5f, 0);
-	private	List<Vector3>	possibleTiles = new List<Vector3>();
+	private	Vector3					offset = new Vector3(0.5f, 0.5f, 0);
+	private	List<Vector3>			possibleTiles = new List<Vector3>();
+	private	MemoryPool				enemySpawnTilePool;
+	private	WaitForSeconds			waitTime = new WaitForSeconds(2.0f);
+	public static UnityEvent		exitEvent = new UnityEvent();
 
 	public static List<EntityBase>	Enemies { get; private set; } = new List<EntityBase>();
 
@@ -32,19 +37,42 @@ public class EnemySpawner : MonoBehaviour
 
 	private void Awake()
 	{
+		enemySpawnTilePool = new MemoryPool(enemySpawnTile);
+
 		// Tilemap의 Bounds 재설정 (맵을 수정했을 때 Bounds가 변경되지 않는 문제 해결)
 		tilemap.CompressBounds();
 		// 타일맵의 모든 타일을 대상으로 적 배치가 가능한 타일 계산
 		CalculatePossibleTiles();
+	}
 
-		// 임의의 타일에 10명의 적 생성
-		for ( int i = 0; i < enemyCount; ++ i )
+	public void SpawnEnemys(int count)
+	{
+		Enemies.Clear();
+		StartCoroutine(nameof(Process), count);
+	}
+
+	private IEnumerator Process(int count)
+	{
+		Vector3[] positions = new Vector3[count];
+		for ( int i = 0; i < count; ++ i )
+		{
+			// 적을 배치할 임의의 위치 설정
+			positions[i] = possibleTiles[Random.Range(0, possibleTiles.Count)];
+			// 적이 배치될 위치에 타일 생성
+			enemySpawnTilePool.ActivatePoolItem(positions[i]);
+		}
+
+		yield return waitTime;
+
+		// 모든 타일 삭제
+		enemySpawnTilePool.DeactivateAllPoolItems();
+		// 적 생성
+		for ( int i = 0; i < count; ++ i )
 		{
 			int type	 = Random.Range(0, enemyPrefabs.Length);
-			int index	 = Random.Range(0, possibleTiles.Count);
 			int wayIndex = Random.Range(0, wayPointData.Length);
 
-			GameObject clone = Instantiate(enemyPrefabs[type], possibleTiles[index], Quaternion.identity, transform);
+			GameObject clone = Instantiate(enemyPrefabs[type], positions[i], Quaternion.identity, transform);
 			clone.GetComponent<EnemyBase>().Initialize(this, parentTransform, gemCollector);
 			clone.GetComponent<EnemyFSM>().Setup(target, wayPointData[wayIndex].wayPoints);
 
@@ -81,6 +109,11 @@ public class EnemySpawner : MonoBehaviour
 	{
 		Enemies.Remove(enemy);
 		Destroy(enemy.gameObject);
+
+		if ( Enemies.Count == 0 )
+		{
+			exitEvent?.Invoke();
+		}
 	}
 }
 

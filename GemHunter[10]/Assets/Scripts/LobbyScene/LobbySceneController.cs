@@ -24,13 +24,13 @@ public class LobbySceneController : MonoBehaviour
 	{
 		int index = swipeUI.CurrentPage;
 	
-		if ( allChapter[index].ChapterDatabase.isUnlock == false)
+		if ( Database.DBItem.chapters[index].isUnlock == false)
 		{
 			Logger.Log("잠겨있는 챕터입니다.");
 			return;
 		}
 
-		Logger.Log($"챕터 {index+1} 시작");
+		PlayerPrefs.SetInt(Constants.ChapterIndex, index);
 
 		SceneLoader.Instance.LoadScene(SceneNames.Game);
 	}

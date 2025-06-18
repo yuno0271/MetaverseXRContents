@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -8,6 +8,11 @@ public class IntroSceneController : MonoBehaviour
 	private	SceneNames		nextScene;
 	[SerializeField]
 	private	TextMeshProUGUI	textPressAnyKey;
+
+	private void Awake()
+	{
+		Database.Read();
+	}
 
 	private IEnumerator Start()
 	{
