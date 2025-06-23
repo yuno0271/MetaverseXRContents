@@ -39,6 +39,8 @@ public class MovementRigidbody2D : MonoBehaviour
     public bool IsLongJump { set; get; } = false;           // 낮은 점프, 높은 점프 체크
     public bool IsGrounded { private set;get; } = false;    // 바닥 체크 (바닥에 닿아있을 때 true)
 
+    public Vector2 Velocity => rigid2D.linearVelocity;
+
     private void Awake()
     {
         moveSpeed = walkSpeed;

@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
     private KeyCode jumpKeyCode = KeyCode.C;
 
     private MovementRigidbody2D movement;
+    private PlayerAnimator playerAnimator;
 
     private void Awake()
     {
         movement = GetComponent<MovementRigidbody2D>();
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
     private void Update()
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
         UpdateMove(x);
         // 플레이어의 점프 제어
         UpdateJump();
+        // 플레이어 애니메이션 제어
+        playerAnimator.UpdateAnimation(x);
     }
 
     private void UpdateMove(float x)
