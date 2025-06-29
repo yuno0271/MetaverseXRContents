@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private StageData stageData;
+    [SerializeField]
     private KeyCode jumpKeyCode = KeyCode.C;
 
     private MovementRigidbody2D movement;
@@ -36,6 +38,10 @@ public class PlayerController : MonoBehaviour
     {
         // 플레이어의 물리적 이동 (좌/우)
         movement.MoveTo(x);
+
+        // 플레이어의 x축 이동 한계치 설정 (PlayerLimitMinX ~ PlayerLimitMaxX)
+        float xPosition = Mathf.Clamp(transform.position.x, stageData.PlayerLimitMinX, stageData.PlayerLimitMaxX);
+        transform.position = new Vector2(xPosition, transform.position.y);
     }
 
     private void UpdateJump()
